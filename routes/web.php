@@ -20,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/edit', 'HomeController@edit')->name('edit');
+
+Route::post('/update', 'HomeController@update')->name('update');
+
+Route::resource('user', 'UserController');
