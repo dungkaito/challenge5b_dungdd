@@ -1,6 +1,6 @@
 # challenge5b_dungdd
 
-Online classroom management web application using Laravel framework. The primary purpose is to streamline the communication and process of sharing files between teachers and students.
+Online classroom management web application using Laravel framework.
 
 ## Installation
 
@@ -12,7 +12,7 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-Make sure you set the correct database connection information in Environment variables `.env` before running the migrations
+Make sure set the correct database connection information in Environment variables `.env` before running the migrations
 
 ```bash
 php artisan migrate
@@ -34,3 +34,7 @@ database/challenge5b_dungdd.sql
 composer dump-autoload
 php artisan migrate:fresh --seed
 ```
+## Route list
+![image](https://user-images.githubusercontent.com/48874865/158473141-cbc58433-10a6-497f-b37e-21de8c0b9866.png)
+
+
