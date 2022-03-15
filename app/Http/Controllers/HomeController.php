@@ -52,9 +52,10 @@ class HomeController extends Controller
     public function update(Request $request)
     {
         //
-        print("<pre>" . print_r($request->file('avatar'), true) . "</pre>"); exit();
+        // print("<pre>" . print_r($request->file('avatar'), true) . "</pre>"); exit();
         // print("<pre>" . print_r(Auth::user()->username, true) . "</pre>"); exit();
         // var_dump('exclude_if:username,'.Auth::user()->username);exit();
+
         $validator = Validator::make($request->all(), [
             'username' => ['exclude_if:username,' . Auth::user()->username, 'required', 'string', 'max:50', 'unique:users'],
             'name' => ['exclude_if:name,' . Auth::user()->name, 'required', 'string', 'max:50'],
@@ -79,6 +80,11 @@ class HomeController extends Controller
                         ->withInput();
         }
 
+        if ($request->hasFile('avatar')) {
+            $avatar_path = $request->file('avatar')->store('images/avatars');
+            // print("<pre>" . print_r($path, true) . "</pre>"); exit();
+        }
+
         // print("<pre>" . print_r($request->all(), true) . "</pre>"); exit();
         $user = User::find(Auth::id());
 
@@ -87,6 +93,7 @@ class HomeController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         if ($request->password != '') $user->password = Hash::make($request->password);
+        if (isset($avatar_path)) $user->avatar_path = $avatar_path;
 
         $user->save();
         

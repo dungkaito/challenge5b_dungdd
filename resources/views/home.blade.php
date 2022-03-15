@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 mt-5">
-            <img class="rounded img-fluid" alt="avatar" src="https://lh3.googleusercontent.com/qA1XBblQqzv703ewVxmWiW2SUHPUq8O15QPZpaY1WS9r6ASFyW4dzMGA3Vgdxm5KDnToVfCBIJEzCG_qrxTcWIpF7l5iu7tdWnHESw=w361">
+            <img id="img" class="rounded img-fluid" alt="avatar" src="{{ URL::asset(Auth::user()->avatar_path) }}">
         </div>
         <div class="col-md-8 mt-5">
             <div class="form-row">

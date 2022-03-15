@@ -12,7 +12,7 @@
         <div class="row">
             
             <div class="col-md-4 mt-5">
-                <img id="img" class="rounded img-fluid" alt="avatar" src="data:image/jpeg;base64, {{ base64_encode(Auth::user()->avatar_path) }}">
+                <img id="img" class="rounded img-fluid" alt="avatar" src="{{ URL::asset(Auth::user()->avatar_path) }}">
 
                 <input type="file" class="form-control-file" accept="image/*" id="file" name="avatar" onchange="loadFile(event)" style="display: none;">
                 
@@ -28,7 +28,7 @@
                     <div class="form-group col-md-6">
                         <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ Auth::user()->username }}" autofocus>
 
-                        @error('username')
+                        @error('username')  
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
