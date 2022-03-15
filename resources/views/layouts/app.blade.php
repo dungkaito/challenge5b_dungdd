@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -35,13 +35,13 @@
                     <ul class="navbar-nav mr-auto">
                         @if (Route::currentRouteName() != 'login' && Route::currentRouteName() != 'register')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Mọi người') }}</a>
+                                <a class="nav-link" href="{{ route('user.index') }}">{{ __('Mọi người') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Bài tập') }}</a>
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Bài tập') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Thử thách') }}</a>
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Thử thách') }}</a>
                             </li>
                         @endif
                     </ul>

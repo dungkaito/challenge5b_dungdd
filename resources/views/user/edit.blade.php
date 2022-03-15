@@ -7,12 +7,13 @@
             {{ session('status') }}
         </div>
     @endif
-    <form method="POST" action="{{ route('update') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('user.update', ['user' => $user]) }}" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="row">
             
             <div class="col-md-4 mt-5">
-                <img id="img" class="rounded img-fluid" alt="avatar" src="{{ url(asset(Auth::user()->avatar_path)) }}">
+                <img id="img" class="rounded img-fluid" alt="avatar" src="{{ url(asset($user->avatar_path)) }}">
 
                 <input type="file" class="form-control-file" accept="image/*" id="file" name="avatar" onchange="loadFile(event)" style="display: none;">
                 
@@ -26,7 +27,7 @@
                         <label for="username">Tài khoản:</label>
                     </div>
                     <div class="form-group col-md-6">
-                        <input {{ Auth::user()->role=='Sinh viên' ? 'readonly' : 'autofocus' }} type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ Auth::user()->username }}">
+                        <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ $user->username }}" autofocus>
 
                         @error('username')  
                             <span class="invalid-feedback" role="alert">
@@ -38,10 +39,10 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-2 pt-2">
-                        <label for="name">{{ Auth::user()->role }}:</label>
+                        <label for="name">{{ $user->role }}:</label>
                     </div>
                     <div class="form-group col-md-6">
-                        <input {{ Auth::user()->role=='Sinh viên' ? 'readonly' : '' }} type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ Auth::user()->name }}">
+                        <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ $user->name }}">
 
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -56,7 +57,7 @@
                         <label for="email">Email:</label>
                     </div>
                     <div class="form-group col-md-6">
-                        <input {{ Auth::user()->role=='Sinh viên' ? 'autofocus' : '' }} type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ Auth::user()->email }}">
+                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ $user->email }}">
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -71,7 +72,7 @@
                         <label for="phone">Số điện thoại:</label>
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="text" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ Auth::user()->phone }}">
+                        <input type="text" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ $user->phone }}">
 
                         @error('phone')
                             <span class="invalid-feedback" role="alert">
@@ -111,7 +112,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                <button type="submit" class="btn btn-primary">Sửa thông tin</button>
             </div>
 
         </div>
