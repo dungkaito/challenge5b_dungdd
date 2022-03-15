@@ -26,3 +26,5 @@ Route::get('/edit', 'HomeController@edit')->name('edit');
 Route::post('/update', 'HomeController@update')->name('update');
 
 Route::resource('user', 'UserController');
+
+Route::resource('message', 'MessageController');
