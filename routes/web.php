@@ -30,3 +30,7 @@ Route::resource('user', 'UserController');
 Route::resource('message', 'MessageController');
 
 Route::get('/api/message/{id}', 'MessageController@getMessages');
+
+Route::resource('classwork', 'ClassworkController');
+
+Route::get('/classwork/{classwork}/download', 'ClassworkController@download')->name('classwork.download');

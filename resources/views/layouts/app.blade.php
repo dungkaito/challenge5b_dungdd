@@ -38,7 +38,7 @@
                                 <a class="nav-link" href="{{ route('user.index') }}">{{ __('Mọi người') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">{{ __('Bài tập') }}</a>
+                                <a class="nav-link" href="{{ route('classwork.index') }}">{{ __('Bài tập') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">{{ __('Thử thách') }}</a>
