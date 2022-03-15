@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect()->route('home');
 });
 
 Auth::routes();
@@ -38,3 +39,7 @@ Route::get('/classwork/{classwork}/download', 'ClassworkController@download')->n
 Route::resource('assignment', 'AssignmentController');
 
 Route::get('/assignment/{assignment}/download', 'AssignmentController@download')->name('assignment.download');
+
+Route::resource('challenge', 'ChallengeController');
+
+Route::get('/challenge/{id}/submitChall', 'ChallengeController@submitChall')->name('challenge.submit');

@@ -41,7 +41,7 @@
                                 <a class="nav-link" href="{{ route('classwork.index') }}">{{ __('Bài tập') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">{{ __('Thử thách') }}</a>
+                                <a class="nav-link" href="{{ route('challenge.index') }}">{{ __('Thử thách') }}</a>
                             </li>
                         @endif
                     </ul>
