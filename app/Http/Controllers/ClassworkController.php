@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classwork;
+use App\Models\Assignment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -62,7 +63,7 @@ class ClassworkController extends Controller
             $size = $request->file('attachment')->getSize();
             // var_dump($size);exit();
             $filename = $filename1 . '-' . Str::random(10) . '.' . $extension;
-            die($filename);
+            // die($filename);
 
             if (!in_array($extension, ['txt', 'pdf', 'docx', 'zip'])) {
                 $error = "Hệ thống chỉ chấp nhận file đính kèm định dạng txt, pdf, doc, docx, zip.";
@@ -99,7 +100,10 @@ class ClassworkController extends Controller
     public function show(Classwork $classwork)
     {
         //
-        return view('classwork.show', ['classwork' => $classwork]);
+        $assignments = Assignment::where('classwork_id', $classwork->id)->get();
+        
+        return view('classwork.show', ['classwork' => $classwork,
+                                       'assignments' => $assignments]);
 
     }
 

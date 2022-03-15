@@ -34,3 +34,7 @@ Route::get('/api/message/{id}', 'MessageController@getMessages');
 Route::resource('classwork', 'ClassworkController');
 
 Route::get('/classwork/{classwork}/download', 'ClassworkController@download')->name('classwork.download');
+
+Route::resource('assignment', 'AssignmentController');
+
+Route::get('/assignment/{assignment}/download', 'AssignmentController@download')->name('assignment.download');

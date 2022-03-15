@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container">    
     <form method="POST" action="{{ url(route('classwork.store')) }}" enctype="multipart/form-data">
         @csrf
         <div class="form-row mt-5">

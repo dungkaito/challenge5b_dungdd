@@ -2,12 +2,23 @@
 
 @section('content')
 <div class="container">
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="form-row mt-5">
         <div class="form-group col-md-2">
             <label for="#">Tiêu đề:</label>
         </div>
         <div class="form-group col-md-10">
-            <input value="{{ $classwork->title }}" readonly type="text" class="form-control" name="title" required minlength="1">
+            <input value="{{ $classwork->title }}" readonly type="text" class="form-control" 
+            name="title" required minlength="1">
         </div>
     </div>
     <div class="form-row">
@@ -15,7 +26,8 @@
             <label for="#">Mô tả:</label>
         </div>
         <div class="form-group col-md-10">
-            <textarea readonly class="form-control" name="description" id="description" rows="10" required minlength="1">{{ $classwork->description }}</textarea>
+            <textarea readonly class="form-control" name="description" id="description" rows="10" 
+            required minlength="1">{{ $classwork->description }}</textarea>
         </div>
     </div>
     <div class="form-row">
@@ -35,7 +47,7 @@
 
     @if (Auth::user()->role == 'Sinh viên')
         <h2>Nộp bài</h2>
-        <form method="POST" action="#" enctype="multipart/form-data">
+        <form method="POST" action="{{ url(route('assignment.store')) }}" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="classwork_id" value="{{ $classwork->id }}">
             <div class="form-row">
@@ -43,7 +55,8 @@
                     <label for="#">Mô tả:</label>
                 </div>
                 <div class="form-group col-md-10">
-                    <textarea class="form-control" name="description" id="description" rows="3" required minlength="1"></textarea>
+                    <textarea class="form-control" name="description" id="description" rows="3" 
+                    required minlength="1"></textarea>
                 </div>
             </div>
             <div class="form-row">
@@ -51,16 +64,16 @@
                     <label for="#">File đính kèm:</label>
                 </div>
                 <div class="form-group col-md-10">
-                    <input type="file" class="form-control-file" name="file">
+                    <input type="file" class="form-control-file" name="attachment">
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Nộp bài tập</button>
         </form>
     @endif
 
-    @if (isset($error))
+    @if (isset($status))
         <br>
-        <p style="text-align: center; font-size: 40px">{{ $error }}</p>
+        <p style="text-align: center; font-size: 40px">{{ $status }}</p>
     @endif
 
     @if (Auth::user()->role == 'Giáo viên')
@@ -90,8 +103,9 @@
 
                             <th scope="row">{{ $count++ }}</th>
                             <td>{{ $a->student_name }}</td>
-                            <td>{{ $a->date }}</td>
-                            <td><a href="#" class="btn btn-info btn-sm" style="white-space: nowrap">Xem chi tiết</a></td>
+                            <td>{{ $a->created_at }}</td>
+                            <td><a href="{{ url(route('assignment.show', ['assignment' => $a->id])) }}" 
+                            class="btn btn-info btn-sm" style="white-space: nowrap">Xem chi tiết</a></td>
 
                         </tr>
 

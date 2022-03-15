@@ -15,7 +15,15 @@ class CreateAssignmentsTable extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('student_id');
+            $table->string('student_name');
+            $table->foreignId('classwork_id');
+            $table->longText('description');
+            $table->string('attachment_path');
             $table->timestamps();
+
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('classwork_id')->references('id')->on('classworks')->onDelete('cascade');
         });
     }
 
