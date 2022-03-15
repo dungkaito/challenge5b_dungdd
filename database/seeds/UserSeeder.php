@@ -59,7 +59,29 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        for ($i=0; $i<10; $i++) {
+        DB::table('users')->insert([
+            'username' => 'student3',
+            'password' => Hash::make('123456a@A'),
+            'name' => 'Dương Đình Anh',
+            'email' => 'sv3@viettelcyber.com',
+            'phone' => '0555555555',
+            'role' => 'Sinh viên',
+            'avatar_path' => '',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'username' => 'student4',
+            'password' => Hash::make('123456a@A'),
+            'name' => 'Dương Đình Tuấn',
+            'email' => 'sv4@viettelcyber.com',
+            'phone' => '0444444444',
+            'role' => 'Sinh viên',
+            'avatar_path' => '',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        for ($i=1; $i<=5; $i++) {
             DB::table('users')->insert([
                 'username' => 'test'.$i,
                 'password' => Hash::make('123456a@A'),

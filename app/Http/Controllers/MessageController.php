@@ -64,16 +64,6 @@ class MessageController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -101,12 +91,8 @@ class MessageController extends Controller
      */
     public function getMessages(int $user_id)
     {
-        // print("<pre>" . print_r(Auth::id(), true) . "</pre>"); exit();
+        // print("<pre>" . print_r($user_id, true) . "</pre>"); exit();
         // get all message of auth user in messages table
-        // $messages = DB::table('messages')
-        //             ->where('sender_id', Auth::id())
-        //             ->orWhere('receiver_id', Auth::id())
-        //             ->get();
         $messages = Message::select("*")
                             ->where('sender_id', Auth::id())
                             ->orWhere('receiver_id', Auth::id())
@@ -125,19 +111,6 @@ class MessageController extends Controller
         // print("<pre>" . print_r($messages, true) . "</pre>"); exit();
 
         return view('message.show', ['messages' => $messages]);
-    }
-
-    /**
-     * Handle ajax request.
-     *
-     * @param  \App\Models\Message  $message
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Message $message)
-    {
-        //
-        // return 1;
-        
     }
 
     /**

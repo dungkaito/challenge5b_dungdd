@@ -107,40 +107,6 @@ class ClassworkController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Classwork  $classwork
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Classwork $classwork)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Classwork  $classwork
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Classwork $classwork)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Classwork  $classwork
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Classwork $classwork)
-    {
-        //
-    }
-
     public function download(Classwork $classwork)
     {
         // print("<pre>" . print_r($classwork->attachment_path, true) . "</pre>"); exit();

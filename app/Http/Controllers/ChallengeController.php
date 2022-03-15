@@ -17,7 +17,6 @@ class ChallengeController extends Controller
      */
     public function index()
     {
-        //
         return view('challenge.index', ['challenges' => Challenge::all()]);
     }
 
@@ -28,7 +27,6 @@ class ChallengeController extends Controller
      */
     public function create()
     {
-        //
         return view('challenge.create');
 
     }
@@ -41,7 +39,6 @@ class ChallengeController extends Controller
      */
     public function store(Request $request)
     {
-        //
         // print("<pre>" . print_r($request->all(), true) . "</pre>"); exit();
 
         if ($request->hasFile('attachment')) {
@@ -50,16 +47,11 @@ class ChallengeController extends Controller
             $filename = $request->file('attachment')->getClientOriginalName();
             $filename1 = pathinfo($filename, PATHINFO_FILENAME);
 
-            // die($filename);
-
-            // die($destination);
             $extension = pathinfo($filename, PATHINFO_EXTENSION);
-            // die($extension);
 
             $size = $request->file('attachment')->getSize();
-            // var_dump($size);exit();
+            
             $filename = $filename1 . '-' . Str::random(10) . '.' . $extension;
-            // die($filename);
 
             if (!in_array($extension, ['txt'])) {
                 $error = "Hệ thống chỉ chấp nhận file đính kèm định dạng txt.";
@@ -96,43 +88,7 @@ class ChallengeController extends Controller
      */
     public function show(Challenge $challenge)
     {
-        //
-        // print("<pre>" . print_r($challenge, true) . "</pre>"); exit();
         return view('challenge.show', ['challenge' => $challenge]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Challenge  $challenge
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Challenge $challenge)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Challenge  $challenge
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Challenge $challenge)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Challenge  $challenge
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Challenge $challenge)
-    {
-        //
     }
 
     public function submitChall(Request $request, int $id)

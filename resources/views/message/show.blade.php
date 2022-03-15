@@ -18,7 +18,7 @@
         </div>
         
     @else
-
+        
         <div class="border border-primary" style="width: fit-content;">
             <p class="mb-0">{{ $m->created_at }}</p>
             <b>{{ $m->content }}</b>
@@ -29,10 +29,11 @@
 
 @php
     foreach ($messages as $m) {
-        if ($m->sender_id == Auth::id()) {
+        if ($m->sender_id == Auth::id())
             $receiver_id = $m->receiver_id;
-            break;
-        }
+        else
+            $receiver_id = $m->sender_id;
+        break;
     }
 @endphp
 
@@ -41,7 +42,8 @@
     <div class="form-group pt-4 mb-2">
         <input type="hidden" name='sender_id' id="sender_id" value='{{ Auth::id() }}'>
         <input type="hidden" name='receiver_id' id="receiver_id" value='{{ $receiver_id }}'>
-        <input type="text" class="form-control" name='content' id="content" placeholder="Nhập tin nhắn" required minlength="1">
+        <input type="text" class="form-control" name='content' id="content" placeholder="Nhập tin nhắn" 
+        required minlength="1">
     </div>
     <button type="submit" class="btn btn-primary">Gửi</button>
 </form>

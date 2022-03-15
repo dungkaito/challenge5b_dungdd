@@ -34,14 +34,17 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @if (Route::currentRouteName() != 'login' && Route::currentRouteName() != 'register')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">{{ __('Mọi người') }}</a>
+                            <li class="nav-item {{ Request::is('user') ? 'active' : '' }}">
+                                <a class="nav-link"
+                                href="{{ route('user.index') }}">{{ __('Mọi người') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('classwork.index') }}">{{ __('Bài tập') }}</a>
+                            <li class="nav-item {{ Request::is('classwork') ? 'active' : '' }}">
+                                <a class="nav-link" 
+                                href="{{ route('classwork.index') }}">{{ __('Bài tập') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('challenge.index') }}">{{ __('Thử thách') }}</a>
+                            <li class="nav-item {{ Request::is('challenge') ? 'active' : '' }}">
+                                <a class="nav-link" 
+                                href="{{ route('challenge.index') }}">{{ __('Thử thách') }}</a>
                             </li>
                         @endif
                     </ul>
@@ -59,7 +62,7 @@
                                 </li>
                             @endif
                         @else
-                            <li>
+                            <li class="{{ Request::is('message') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('message.index') }}">{{ __('Tin nhắn') }}</a>
                             </li>
                             <li class="nav-item dropdown">
