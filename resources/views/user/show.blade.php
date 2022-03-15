@@ -39,10 +39,11 @@
                     <input disabled type="text" class="form-control" value="{{ $user->phone }}">
                 </div>
             </div>
-            <form method="POST" action="?controller=message&action=send">
+            <form method="POST" action="{{ url(route('message.store')) }}">
+                @csrf
                 <div class="form-group pt-4 mb-2">
-                    <input type="hidden" name='sender_id' id="sender_id" value='<?= $data['currentUser']['id'] ?>'>
-                    <input type="hidden" name='receiver_id' id="receiver_id" value='<?= $data['user']['id'] ?>'>
+                    <input type="hidden" name='sender_id' id="sender_id" value='{{ Auth::id() }}'>
+                    <input type="hidden" name='receiver_id' id="receiver_id" value='{{ $user->id }}'>
                     <input type="text" class="form-control" name='content' id="content" placeholder="Nhập tin nhắn" required minlength="1">
                 </div>
                 <button type="submit" class="btn btn-primary">Trò chuyện</button>

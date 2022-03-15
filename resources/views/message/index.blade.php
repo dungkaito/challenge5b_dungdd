@@ -33,7 +33,7 @@
                 document.getElementById("messages-view").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "/message/" + user.id, true);
+        xmlhttp.open("GET", "api/message/" + user.id, true);
         xmlhttp.send();
     }
 

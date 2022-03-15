@@ -28,3 +28,5 @@ Route::post('/update', 'HomeController@update')->name('update');
 Route::resource('user', 'UserController');
 
 Route::resource('message', 'MessageController');
+
+Route::get('/api/message/{id}', 'MessageController@getMessages');
