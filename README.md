@@ -46,7 +46,7 @@ php artisan storage:link
 php artisan config:cache
 ```
 ## Shared hosting
-On some web shared hosting services, **symlink()** has been disabled for security reasons. In that situation, web have to change these line in the filesystem configuration file `/config/filesystems.php`
+On some web shared hosting services, **symlink()** has been disabled for security reasons. In that situation, we have to change these lines in the filesystem configuration file `/config/filesystems.php`
 
 ```
 'default' => env('FILESYSTEM_DRIVER', 'public'),
